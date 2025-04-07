@@ -11,16 +11,20 @@
 - **Trực quan hóa**: Hiển thị sơ đồ lực tác dụng và biểu đồ hàm mất mát tương tác
 - **Báo cáo**: Xuất báo cáo dạng PDF và Excel
 - **Cơ sở dữ liệu**: Lưu trữ và quản lý lịch sử tính toán
-- **Triển khai miễn phí**: Hỗ trợ triển khai lên Hugging Face Spaces miễn phí lâu dài
+- **Triển khai miễn phí**: Đã được triển khai lên Hugging Face Spaces miễn phí lâu dài
 
-## Cài đặt
+## Truy cập ứng dụng
+
+Ứng dụng đã được triển khai và có thể truy cập tại: [Công cụ tính toán tối ưu mặt cắt đập bê tông](https://huggingface.co/spaces/dam-optimizer/dam-optimizer)
+
+## Cài đặt cục bộ
 
 ### Yêu cầu
 
 - Python 3.9 trở lên
 - Các thư viện được liệt kê trong `requirements.txt`
 
-### Cài đặt cục bộ
+### Cài đặt
 
 1. Clone repository:
 ```bash
@@ -33,14 +37,22 @@ cd dam-optimizer
 pip install -r requirements.txt
 ```
 
-3. Chạy ứng dụng:
+3. Cài đặt wkhtmltopdf (cho chức năng xuất PDF):
+```bash
+# Ubuntu/Debian
+sudo apt-get install wkhtmltopdf
+
+# macOS
+brew install wkhtmltopdf
+
+# Windows
+# Tải và cài đặt từ https://wkhtmltopdf.org/downloads.html
+```
+
+4. Chạy ứng dụng:
 ```bash
 streamlit run app.py
 ```
-
-### Triển khai lên Hugging Face Spaces
-
-Xem hướng dẫn chi tiết trong file `deployment_guide.md`.
 
 ## Cấu trúc dự án
 
@@ -48,7 +60,8 @@ Xem hướng dẫn chi tiết trong file `deployment_guide.md`.
 dam_optimizer/
 ├── app.py                  # Điểm vào chính của ứng dụng Streamlit
 ├── requirements.txt        # Các thư viện cần thiết
-├── deployment_guide.md     # Hướng dẫn triển khai
+├── packages.txt            # Các gói hệ thống cần thiết
+├── Dockerfile              # Cấu hình Docker cho việc triển khai
 ├── modules/
 │   ├── __init__.py
 │   ├── pinns_model.py      # Mô-đun tính toán PINNs
@@ -98,7 +111,3 @@ dam_optimizer/
 ## Giấy phép
 
 MIT License
-
-## Liên hệ
-
-Nếu có bất kỳ câu hỏi hoặc góp ý nào, vui lòng liên hệ qua email: example@example.com
